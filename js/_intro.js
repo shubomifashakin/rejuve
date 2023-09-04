@@ -17,9 +17,6 @@ class Intro {
     //split the text of the element
     this.splitText(this.waveText);
 
-    //initialize animations
-    this.introAnim();
-
     this.dropBtn.addEventListener("click", () => {
       this.dropdownList.classList.toggle("active");
     });

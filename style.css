@@ -6,7 +6,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
-  --dark-green: #050f09;
+  --dark-green: #0b2214;
   --white-text: #fff;
   --brown-bg: #f2ab73;
   --dark-orange-bg: #c84c3c;
@@ -33,19 +33,43 @@ body {
   0% {
     opacity: 0;
   }
-  100% {
+  50% {
     opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 .app {
   position: relative;
+
+  > .pre-loader {
+    height: 100vh;
+    width: 100%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    left: 0;
+    background-color: var(--dark-green);
+    z-index: 100;
+
+    > p {
+      color: var(--white-text);
+      font-size: 2rem;
+      text-transform: uppercase;
+      animation: blink 2.5s ease-in-out forwards infinite;
+    }
+  }
+
   > nav {
     width: 100%;
     border: none;
     outline: none;
     position: fixed;
     /* top: 0; */
-    z-index: 100;
+    z-index: 80;
     padding: 1rem 3rem;
     background: var(--dark-green);
 
