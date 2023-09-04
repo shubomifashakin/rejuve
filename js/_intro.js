@@ -68,7 +68,7 @@ class Intro {
     const timeline = gsap.timeline({ defaults: { duration: 1 } });
 
     timeline
-      .to(this.rects, { stagger: 1, left: "100%" })
+      .to(this.rects, { stagger: 1, left: "100%", delay: 1 })
       .from(this.img, { translateX: "-100%", delay: 1 }, "<")
       .to(this.img, { filter: "grayscale(0)" }, "<")
       .from(this.outer, { translateY: "30px", opacity: 0 })
