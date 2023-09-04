@@ -12,7 +12,7 @@ class ThirdSect {
   }
 
   animSect() {
-    this.section3Inner.forEach((c) =>
+    this.section3Inner.forEach((c) => {
       gsap.to(c, {
         scrollTrigger: {
           trigger: c,
@@ -23,8 +23,16 @@ class ThirdSect {
             tl.to(c.children, { opacity: 1, stagger: 0.5 });
           },
         },
-      })
-    );
+      }),
+        ScrollTrigger.create({
+          trigger: c,
+          start: "top bottom",
+          end: "top top",
+          onUpdate: ({ progress }) => {
+            gsap.to(c, { opacity: progress });
+          },
+        });
+    });
   }
 }
 

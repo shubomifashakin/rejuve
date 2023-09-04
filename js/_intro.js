@@ -9,6 +9,9 @@ class Intro {
   img = this.section1.querySelector(".images");
   outer = this.section1.querySelector(".outer-text");
   waveText = document.querySelector(".wave");
+  dropBtn = document.querySelector(".drop-btn");
+  dropdownList = document.querySelector(".dropdown-list");
+  scrolled = 0;
 
   constructor() {
     //split the text of the element
@@ -16,6 +19,36 @@ class Intro {
 
     //initialize animations
     this.introAnim();
+
+    this.dropBtn.addEventListener("click", () => {
+      this.dropdownList.classList.toggle("active");
+    });
+
+    //if anywhere besides the navbar on the site is clicked, close the dropdown
+    document.addEventListener("click", (e) => {
+      if (e.target.closest(".navbar")) return;
+      this.dropdownList.classList.remove("active");
+    });
+
+    document.addEventListener("scroll", (e) => {
+      //if the value scrolled is less than our stored scrolled value then we are scrolling backward, so show the navbar
+
+      if (scrollY < this.scrolled) {
+        gsap.to(this.navbar, { translateY: "0", duration: 0.5 });
+      }
+      //if the value scrolled is greater than our previously stored value and we have scrolled past the devices view port, then we are scrolling forward so hide the navbar
+      else if (scrollY > this.scrolled && scrollY > 300) {
+        this.dropdownList.classList.remove("active");
+        gsap.to(this.navbar, {
+          translateY: "-100%",
+          ease: "bounce",
+          duration: 0.5,
+        });
+      }
+
+      //store the new scrolled position
+      this.scrolled = scrollY;
+    });
   }
 
   splitText(el) {
@@ -39,12 +72,13 @@ class Intro {
 
     timeline
       .to(this.rects, { stagger: 1, left: "100%" })
-      .from(this.img, { width: "0%", delay: 1 }, "<")
+      .from(this.img, { translateX: "-100%", delay: 1 }, "<")
+      .to(this.img, { filter: "grayscale(0)" }, "<")
       .from(this.outer, { translateY: "30px", opacity: 0 })
       .from(this.navbar.querySelector("ul"), { opacity: 0 }, "<")
       .fromTo(
         this.waveText.children,
-        { translateY: "-20px", display: "inline-block", color: "#c4c3c3" },
+        { translateY: "-10px", display: "inline-block", color: "#c4c3c3" },
         {
           translateY: "0px",
           stagger: 0.05,

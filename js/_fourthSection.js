@@ -16,11 +16,7 @@ class Sect4 {
         trigger: this.section4,
         start: "top +200px",
         onEnter: () => {
-          gsap.fromTo(
-            this.section4.children,
-            { opacity: 0 },
-            { stagger: 0.3, opacity: 1 }
-          );
+          gsap.to(this.section4.children, { stagger: 0.3, opacity: 1 });
         },
       },
     });
