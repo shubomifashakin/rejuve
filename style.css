@@ -70,10 +70,10 @@ body {
     width: 100%;
     border: none;
     outline: none;
-    position: fixed;
+    /* position: fixed; */
     /* top: 0; */
     z-index: 80;
-    padding: 1rem 3rem;
+    padding: 0.5rem 3rem;
     background: var(--dark-green);
 
     .mobile-nav {
@@ -276,27 +276,35 @@ body {
     .inner-sect-container-1 {
       z-index: 2;
       background: var(--dark-orange-bg);
+      top: 0;
+      border-top-right-radius: 10px;
+      border-top-left-radius: 10px;
+      height: 100vh;
     }
 
     .inner-sect-container-2 {
       z-index: 3;
       background-color: var(--rose-bg);
+      top: 10%;
+      height: 90vh;
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
     }
 
     .inner-sect-container-3 {
       z-index: 4;
       background-color: var(--brown-bg);
+      top: 20%;
+      height: 80vh;
+      border-top-right-radius: 20px;
+      border-top-left-radius: 20px;
     }
 
     .inner-sect-container {
-      height: 100vh;
       width: 100%;
       position: sticky;
-      top: 0;
       opacity: 0;
       padding: 1rem 3rem;
-      padding-top: 4.75rem;
-      border-radius: 10px;
 
       > nav {
         height: 10%;
@@ -374,12 +382,12 @@ body {
 
         .right {
           flex-basis: 55%;
-          height: fit-content;
+          height: 90%;
           /* background-color: red; */
-          padding: 1rem;
+          padding: 0.75rem 0.5rem;
           border-radius: 5px;
-          background: #ffffff8c;
-          animation: forwards infinite ease-in-out blinks 3s;
+          /* background: #ffffff8c; */
+          /* animation: forwards infinite ease-in-out blinks 3s; */
 
           > img {
             width: 100%;
@@ -472,10 +480,11 @@ body {
 @media (max-width: 600px) {
   .app {
     > nav {
-      position: fixed;
       top: 0;
       left: 0;
       z-index: 80;
+      position: relative;
+      /* position: fixed; */
       padding: 1.25rem 1.5rem !important;
 
       .desktop-nav {
@@ -580,7 +589,7 @@ body {
     .section-3 {
       .inner-sect-container {
         padding: 1rem 1.5rem;
-        padding-top: 4.25rem;
+        /* padding-top: 4.25rem; */
         border-radius: 0 !important;
 
         .inner-sect {

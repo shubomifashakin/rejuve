@@ -11,7 +11,7 @@ class Intro {
   waveText = document.querySelector(".wave");
   dropBtn = document.querySelector(".drop-btn");
   dropdownList = document.querySelector(".dropdown-list");
-  scrolled = 0;
+  // scrolled = 0;
 
   constructor() {
     //split the text of the element
@@ -23,29 +23,36 @@ class Intro {
 
     //if anywhere besides the navbar on the site is clicked, close the dropdown
     document.addEventListener("click", (e) => {
-      if (e.target.closest(".navbar")) return;
+      if (
+        e.target.closest(".navbar") &&
+        !e.target.classList.contains("nav-link")
+      )
+        return;
+      if (e.target.classList.contains("nav-link")) {
+        this.dropdownList.classList.remove("active");
+      }
       this.dropdownList.classList.remove("active");
     });
 
-    document.addEventListener("scroll", (e) => {
-      //if the value scrolled is less than our stored scrolled value then we are scrolling backward, so show the navbar
+    // document.addEventListener("scroll", (e) => {
+    //   //if the value scrolled is less than our stored scrolled value then we are scrolling backward, so show the navbar
 
-      if (scrollY < this.scrolled) {
-        gsap.to(this.navbar, { translateY: "0", duration: 0.5 });
-      }
-      //if the value scrolled is greater than our previously stored value and we have scrolled past the devices view port, then we are scrolling forward so hide the navbar
-      else if (scrollY > this.scrolled && scrollY > 300) {
-        this.dropdownList.classList.remove("active");
-        gsap.to(this.navbar, {
-          translateY: "-100%",
-          ease: "bounce",
-          duration: 0.5,
-        });
-      }
+    //   if (scrollY < this.scrolled) {
+    //     gsap.to(this.navbar, { translateY: "0", duration: 0.5 });
+    //   }
+    //   //if the value scrolled is greater than our previously stored value and we have scrolled past the devices view port, then we are scrolling forward so hide the navbar
+    //   else if (scrollY > this.scrolled && scrollY > 300) {
+    //     this.dropdownList.classList.remove("active");
+    //     gsap.to(this.navbar, {
+    //       translateY: "-100%",
+    //       ease: "bounce",
+    //       duration: 0.5,
+    //     });
+    //   }
 
-      //store the new scrolled position
-      this.scrolled = scrollY;
-    });
+    //   //store the new scrolled position
+    //   this.scrolled = scrollY;
+    // });
   }
 
   splitText(el) {
