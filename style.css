@@ -476,7 +476,7 @@ body {
       top: 0;
       left: 0;
       z-index: 80;
-      padding: 1.5rem 1.5rem !important;
+      padding: 1.25rem 1.5rem !important;
 
       .desktop-nav {
         display: none;
@@ -499,7 +499,7 @@ body {
         .mobile-nav-right {
           > * {
             color: var(--white-text);
-            font-size: 1.5rem;
+            font-size: 1.25rem;
           }
         }
 
